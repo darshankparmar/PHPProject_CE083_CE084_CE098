@@ -29,14 +29,14 @@ echo '<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
           <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>';
         
-          echo '<ul class="navbar-nav mr-2">
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"> Welcome </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="logout.php">Logout</a>
-              </div>
-            </li>
-          </ul>';
+          // echo '<ul class="navbar-nav mr-2">
+          //   <li class="nav-item dropdown">
+          //     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"> Welcome </a>
+          //     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          //       <a class="dropdown-item" href="logout.php">Logout</a>
+          //     </div>
+          //   </li>
+          // </ul>';
         
           echo '<!-- Button trigger Login modal -->
           <button type="button" class="btn btn-success mx-2"  data-toggle="modal" data-target="#loginModal">Login</button>

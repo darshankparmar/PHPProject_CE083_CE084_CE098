@@ -7,16 +7,50 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <title>Home</title>
 </head>
 <body>
-  <?php include '_dbconnect.php';?>
-  <?php require '_nav.php' ?>
-  
-  <!-- Category container starts here -->
-  <div class="container my-3">
-    
-  </div>
+    <?php include '_dbconnect.php';?>
+    <?php require '_nav.php' ?>
+
+    <div class="container my-4">
+        <div class="row jumbotron">
+        <?php
+            $pizzaId = $_GET['pizzaid'];
+            $sql = "SELECT * FROM `pizza` WHERE pizzaId = $pizzaId";
+            $result = mysqli_query($conn, $sql);
+            while($row = mysqli_fetch_assoc($result)){
+                $pizzaName = $row['pizzaName'];
+                $pizzaPrice = $row['pizzaPrice'];
+                $pizzaDesc = $row['pizzaDesc'];
+                $pizzaCategorieId = $row['pizzaCategorieId'];
+            }
+
+        echo  '<div class="col-md-4">
+                <img src="img/pizza-'.$pizzaId. '.jpg" width="249px" height="262px">
+            </div>
+            <div class="col-md-8 my-4">
+                <h5>' . $pizzaName . '</h5>
+                <h6 style="color: #ff0000">Rs. '.$pizzaPrice. '/-</h6>
+                <p>' .$pizzaDesc .'</p>
+                <h6> View </h6>
+                <div>&nbsp;&nbsp;
+                    <a href="viewPizzaList.php?catid=' . $pizzaCategorieId . '" class="active text-dark">
+                    <i class="fas fa-qrcode"></i>
+                        <span>All Pizza</span>
+                    </a>
+                </div>
+                <div>&nbsp;&nbsp;
+                    <a href="index.php" class="active text-dark">
+                    <i class="fas fa-qrcode"></i>
+                        <span>All Category</span>
+                    </a>
+                </div>
+            </div>'
+        ?>
+        </div>
+    </div>
 
 
     <?php require '_footer.php' ?>

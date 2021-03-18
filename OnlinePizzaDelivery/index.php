@@ -7,6 +7,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <title>Home</title>
 </head>
 <body>
@@ -22,35 +23,23 @@
         $sql = "SELECT * FROM `categories`"; 
         $result = mysqli_query($conn, $sql);
         while($row = mysqli_fetch_assoc($result)){
-        // echo $row['categorieId'];
-        // echo $row['categorieName'];
-        $id = $row['categorieId'];
-        $cat = $row['categorieName'];
-        $desc = $row['categorieDesc'];
-        echo '<div class="col-xs-3 col-sm-3 col-md-3">
-                <div class="card" style="width: 18rem;">
-                  <img src="img/card-'.$id. '.jpg" class="card-img-top" alt="image for this category">
-                  <div class="card-body">
-                    <h5 class="card-title"><a href="threadlist.php?catid=' . $id . '">' . $cat . '</a></h5>
-                    <p class="card-text">' . substr($desc, 0, 90). '... </p>
-                    <a href="threadlist.php?catid=' . $id . '" class="btn btn-primary">View Threads</a>
+          // echo $row['categorieId'];
+          // echo $row['categorieName'];
+          $id = $row['categorieId'];
+          $cat = $row['categorieName'];
+          $desc = $row['categorieDesc'];
+          echo '<div class="col-xs-3 col-sm-3 col-md-3">
+                  <div class="card" style="width: 18rem;">
+                    <img src="img/card-'.$id. '.jpg" class="card-img-top" alt="image for this category" width="249px" height="270px">
+                    <div class="card-body">
+                      <h5 class="card-title"><a href="viewPizzaList.php?catid=' . $id . '">' . $cat . '</a></h5>
+                      <p class="card-text">' . substr($desc, 0, 30). '... </p>
+                      <a href="viewPizzaList.php?catid=' . $id . '" class="btn btn-primary">View All</a>
+                    </div>
                   </div>
-                </div>
-              </div>';
+                </div>';
         }
       ?>
-      <!-- <div class="col-md-4 my-2">
-        <div class="card" style="width: 18rem;">
-          <img src="https://www.dominos.co.in/theme2/front/images/menu-images/my-vegpizza.jpg" class="card-img-top" alt="image for this category">
-          <div class="card-body">
-            <h5 class="card-title">title</h5>
-            <p class="card-text">gtfrtgyjnm nhgyrffvgbhjn</p>
-            <a href="#" class="btn btn-primary">View All</a>
-          </div>
-        </div>
-      </div> -->
-
-
     </div>
   </div>
 
