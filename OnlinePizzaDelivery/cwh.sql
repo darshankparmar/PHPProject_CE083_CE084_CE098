@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 18, 2021 at 08:42 AM
+-- Generation Time: Mar 19, 2021 at 06:54 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.2.34
 
@@ -145,7 +145,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `firstName`, `lastName`, `email`, `phone`, `password`, `joinDate`) VALUES
-(1, 'dkp', 'Darshan', 'Parmar', 'dkp@gmail.com', 8484848484, '$2y$10$xsQRabeTJOWikMfUz9uRe.K5huKm2naN7sUH7lXSTvkV5tTipHTCS', '2021-03-17 17:20:25');
+(1, 'dkp', 'Darshan', 'Parmar', 'dkp@gmail.com', 8484848484, '$2y$10$xsQRabeTJOWikMfUz9uRe.K5huKm2naN7sUH7lXSTvkV5tTipHTCS', '2021-03-17 17:20:25'),
+(2, 'harsh', 'Harsh', 'Patel', 'harsh@gmail.com', 1111111111, '$2y$10$fLAC84Mv4dHh3VuaYQfRRetTIYT/oJicb3IAoDyeKSEZtLD9LUK66', '2021-03-18 16:53:35'),
+(3, 'admin', 'admin', 'admin', 'admin@gmail.com', 2222222222, '$2y$10$BEcCNKexFJh66GK1h/nFUeYq0MRVAWlyXbMJfH5ClMgWoprtReTWW', '2021-03-18 16:55:54'),
+(4, 'user', 'user', 'user', 'user@gmail.com', 3333333333, '$2y$10$Nkf3kFSH8/Pg5jwbzGJixevoP5B4PIOyoihx7puzJGeKGi9cR.NH.', '2021-03-18 16:57:50');
 
 --
 -- Indexes for dumped tables
@@ -156,12 +159,14 @@ INSERT INTO `users` (`id`, `username`, `firstName`, `lastName`, `email`, `phone`
 --
 ALTER TABLE `categories`
   ADD PRIMARY KEY (`categorieId`);
+ALTER TABLE `categories` ADD FULLTEXT KEY `categorieName` (`categorieName`,`categorieDesc`);
 
 --
 -- Indexes for table `pizza`
 --
 ALTER TABLE `pizza`
   ADD PRIMARY KEY (`pizzaId`);
+ALTER TABLE `pizza` ADD FULLTEXT KEY `pizzaName` (`pizzaName`,`pizzaDesc`);
 
 --
 -- Indexes for table `users`
@@ -190,7 +195,7 @@ ALTER TABLE `pizza`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(21) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(21) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

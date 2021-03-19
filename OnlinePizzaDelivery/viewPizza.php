@@ -8,25 +8,31 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-    <title>Home</title>
+    <title id=title>Pizza</title>
+    <style>
+    #cont {
+        min-height : 578px;
+    }
+    </style>
 </head>
 <body>
-    <?php include '_dbconnect.php';?>
-    <?php require '_nav.php' ?>
+    <?php include 'partials/_dbconnect.php';?>
+    <?php require 'partials/_nav.php' ?>
 
-    <div class="container my-4">
+    <div class="container my-4" id="cont">
         <div class="row jumbotron">
         <?php
             $pizzaId = $_GET['pizzaid'];
             $sql = "SELECT * FROM `pizza` WHERE pizzaId = $pizzaId";
             $result = mysqli_query($conn, $sql);
-            while($row = mysqli_fetch_assoc($result)){
-                $pizzaName = $row['pizzaName'];
-                $pizzaPrice = $row['pizzaPrice'];
-                $pizzaDesc = $row['pizzaDesc'];
-                $pizzaCategorieId = $row['pizzaCategorieId'];
-            }
-
+            $row = mysqli_fetch_assoc($result);
+            $pizzaName = $row['pizzaName'];
+            $pizzaPrice = $row['pizzaPrice'];
+            $pizzaDesc = $row['pizzaDesc'];
+            $pizzaCategorieId = $row['pizzaCategorieId'];
+        ?>
+        <script> document.getElementById("title").innerHTML = "<?php echo $pizzaName; ?>"; </script> 
+        <?php
         echo  '<div class="col-md-4">
                 <img src="img/pizza-'.$pizzaId. '.jpg" width="249px" height="262px">
             </div>
@@ -53,7 +59,7 @@
     </div>
 
 
-    <?php require '_footer.php' ?>
+    <?php require 'partials/_footer.php' ?>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

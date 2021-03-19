@@ -11,11 +11,11 @@
     <title>Home</title>
 </head>
 <body>
-  <?php include '_dbconnect.php';?>
-  <?php require '_nav.php' ?>
+  <?php include 'partials/_dbconnect.php';?>
+  <?php require 'partials/_nav.php' ?>
   
   <!-- Category container starts here -->
-  <div class="container my-3">
+  <div class="container my-3 mb-5">
     <h2 class="text-center">Menu </h2>
     <div class="row">
       <!-- Fetch all the categories and use a loop to iterate through categories -->
@@ -23,8 +23,6 @@
         $sql = "SELECT * FROM `categories`"; 
         $result = mysqli_query($conn, $sql);
         while($row = mysqli_fetch_assoc($result)){
-          // echo $row['categorieId'];
-          // echo $row['categorieName'];
           $id = $row['categorieId'];
           $cat = $row['categorieName'];
           $desc = $row['categorieDesc'];
@@ -44,7 +42,7 @@
   </div>
 
 
-    <?php require '_footer.php' ?>
+    <?php require 'partials/_footer.php' ?>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

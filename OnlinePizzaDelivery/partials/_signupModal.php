@@ -9,7 +9,7 @@
             </button>
           </div>
           <div class="modal-body">
-            <form action="/shop/signup/" method="post">
+            <form action="partials/_handleSignup.php" method="post">
               <div class="form-group">
                   <b><label for="username">Username</label></b>
                   <input class="form-control" id="username" name="username" placeholder="Choose a unique Username" type="text" required minlength="3" maxlength="11">
@@ -21,7 +21,7 @@
                 </div>
                 <div class="form-group col-md-6">
                   <b><label for="lastName">Last name:</label></b>
-                  <input type="text" class="form-control" id="lastName" name="lastNname" placeholder="Last name" required>
+                  <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last name" required>
                 </div>
               </div>
               <div class="form-group">
@@ -43,7 +43,7 @@
               </div>
               <div class="text-left my-2">
                   <b><label for="password1">Renter Password:</label></b>
-                  <input class="form-control" id="cpassword" name="cpassword" placeholder="Renter Password" type="password" required data-toggle="password" minlength="4" maxlength="1">
+                  <input class="form-control" id="cpassword" name="cpassword" placeholder="Renter Password" type="password" required data-toggle="password" minlength="4" maxlength="21">
               </div>
               <button type="submit" class="btn btn-success">Submit</button>
             </form>

@@ -17,11 +17,11 @@
     </style>
   </head>
   <body>
-  <!-- <?php include '_dbconnect.php';?> -->
-  <?php include '_nav.php';?>
+  <!-- <?php include 'partials/_dbconnect.php';?> -->
+  <?php include 'partials/_nav.php';?>
   
 
-  <?php include '_footer.php';?> 
+  <?php include 'partials/_footer.php';?> 
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

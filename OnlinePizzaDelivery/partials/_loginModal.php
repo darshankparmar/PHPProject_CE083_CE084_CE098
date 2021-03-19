@@ -9,7 +9,7 @@
             </button>
           </div>
           <div class="modal-body">
-            <form action="#" method="post">
+            <form action="partials/_handleLogin.php" method="post">
               <div class="text-left my-2">
                   <b><label for="username">Username</label></b>
                   <input class="form-control" id="loginusername" name="loginusername" placeholder="Enter Your Username" type="text" required pattern="^[a-z]{3,15}$">
