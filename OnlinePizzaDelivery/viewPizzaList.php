@@ -61,11 +61,19 @@
                             <div class="card-body">
                                 <h5 class="card-title">' . substr($pizzaName, 0, 20). '...</h5>
                                 <h6 style="color: #ff0000">Rs. '.$pizzaPrice. '/-</h6>
-                                <p class="card-text">' . substr($pizzaDesc, 0, 29). '...</p>
-                                <span id="pr'.$pizzaId. '" class="divpr">
-                                    <button onclick="addToCart'.$pizzaId. '()" class="btn btn-primary cart">Add to Cart</button>
-                                </span>
-                                <a href="viewPizza.php?pizzaid=' . $pizzaId . '"><button class="btn btn-primary">Quick View</button></a>
+                                <p class="card-text">' . substr($pizzaDesc, 0, 29). '...</p>   
+                                <div class="row justify-content-center">
+                                <form action="partials/_manageCart.php" method="POST" class="mx-2">
+                                <input type="hidden" name="itemId" value="'.$pizzaId. '">';
+                                if($loggedin){
+                                    echo '<button type="submit" name="addToCart" class="btn btn-primary">Add to Cart</button>';
+                                }
+                                else{
+                                    echo '<button type="submit" name="addToCart" class="btn btn-primary" disabled>Add to Cart</button>';
+                                }
+                            echo '</form>                            
+                                <a href="viewPizza.php?pizzaid=' . $pizzaId . '" class="mx-2"><button class="btn btn-primary">Quick View</button></a> 
+                                </div>
                             </div>
                         </div>
                     </div>';
@@ -97,20 +105,6 @@
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>         
-    <?php
-        $sql = "SELECT * FROM `pizza` WHERE pizzaCategorieId = $id";
-        $result = mysqli_query($conn, $sql);
-        while($row = mysqli_fetch_assoc($result)){
-            $pizzaId = $row['pizzaId'];
-            ?>  <script>
-                    var sum = 0;
-                    function addToCart<?php echo $pizzaId; ?>() {
-                        document.getElementById("pr<?php echo $pizzaId; ?>").innerHTML = '<button onclick="" class="btn btn-primary cart">Go to Cart</button>';
-                        sum = sum + 1;
-                        document.getElementById('cart').innerHTML = sum;
-                    }
-                </script><?php
-        }
-    ?>
+
 </body>
 </html>

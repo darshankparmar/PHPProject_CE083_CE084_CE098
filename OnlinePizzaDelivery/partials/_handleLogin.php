@@ -9,10 +9,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $num = mysqli_num_rows($result);
     if ($num == 1){
         $row=mysqli_fetch_assoc($result);
+        $userId = $row['id'];
         if (password_verify($password, $row['password'])){ 
             session_start();
             $_SESSION['loggedin'] = true;
             $_SESSION['username'] = $username;
+            $_SESSION['userId'] = $userId;
+            // echo $_SESSION['userId'];
             header("location: /OnlinePizzaDelivery/index.php?loginsuccess=true");
             exit();
         } 
