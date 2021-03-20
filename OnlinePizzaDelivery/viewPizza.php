@@ -37,17 +37,34 @@
                 <img src="img/pizza-'.$pizzaId. '.jpg" width="249px" height="262px">
             </div>
             <div class="col-md-8 my-4">
-                <h5>' . $pizzaName . '</h5>
-                <h6 style="color: #ff0000">Rs. '.$pizzaPrice. '/-</h6>
-                <p>' .$pizzaDesc .'</p>
-                <h6> View </h6>
-                <div>&nbsp;&nbsp;
+                <h3>' . $pizzaName . '</h3>
+                <h5 style="color: #ff0000">Rs. '.$pizzaPrice. '/-</h5>
+                <p class="mb-0">' .$pizzaDesc .'</p>';
+
+                if($loggedin){
+                    $quaSql = "SELECT `itemQuantity` FROM `viewcart` WHERE pizzaId = '$pizzaId' AND `userId`='$userId'";
+                    $quaresult = mysqli_query($conn, $quaSql);
+                    $quaExistRows = mysqli_num_rows($quaresult);
+                    if($quaExistRows == 0) {
+                        echo '<form action="partials/_manageCart.php" method="POST">
+                              <input type="hidden" name="itemId" value="'.$pizzaId. '">
+                              <button type="submit" name="addToCart" class="btn btn-primary my-2">Add to Cart</button>';
+                    }else {
+                        echo '<a href="viewCart.php"><button class="btn btn-primary my-2">Go to Cart</button></a>';
+                    }
+                }
+                else{
+                    echo '<button class="btn btn-primary my-2" disabled>Add to Cart</button>';
+                }
+                echo '</form>
+                <h6 class="my-1"> View </h6>
+                <div class="mx-4">
                     <a href="viewPizzaList.php?catid=' . $pizzaCategorieId . '" class="active text-dark">
                     <i class="fas fa-qrcode"></i>
                         <span>All Pizza</span>
                     </a>
                 </div>
-                <div>&nbsp;&nbsp;
+                <div class="mx-4">
                     <a href="index.php" class="active text-dark">
                     <i class="fas fa-qrcode"></i>
                         <span>All Category</span>

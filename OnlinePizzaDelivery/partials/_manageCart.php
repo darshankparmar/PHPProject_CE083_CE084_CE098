@@ -14,16 +14,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
             echo "<script>alert('Item Already Added.');
                     window.history.back(1);
                     </script>";
-            //header("Location: /OnlinePizzaDelivery/index.php");
         }
         else{
             $sql = "INSERT INTO `viewcart` (`pizzaId`, `itemQuantity`, `userId`, `addedDate`) VALUES ('$itemId', '1', '$userId', current_timestamp())";   
             $result = mysqli_query($conn, $sql);
             if ($result){
-                echo "<script>alert('Success');
+                echo "<script>
                     window.history.back(1);
                     </script>";
-                // header("Location: /OnlinePizzaDelivery/index.php");
             }
         }
     }
