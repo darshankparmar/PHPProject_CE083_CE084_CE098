@@ -37,6 +37,7 @@
                                 <th scope="col">Item Name</th>
                                 <th scope="col">Item Price</th>
                                 <th scope="col">Quantity</th>
+                                <th scope="col">Total Price</th>
                                 <th scope="col">
                                     <form action="partials/_manageCart.php" method="POST">
                                         <button name="removeAllItem" class="btn btn-sm btn-outline-danger">Remove All</button>
@@ -47,7 +48,7 @@
                         </thead>
                         <tbody>
                             <?php
-                                $userId = $_SESSION['userId'];
+                                // $userId = $_SESSION['userId'];
                                 $sql = "SELECT * FROM `viewcart` WHERE `userId`= $userId";
                                 $result = mysqli_query($conn, $sql);
                                 $counter = 0;
@@ -68,7 +69,13 @@
                                             <td>' . $counter . '</td>
                                             <td>' . $pizzaName . '</td>
                                             <td>' . $pizzaPrice . '</td>
-                                            <td><input class="text-center" id="quantity' . $pizzaId . '" type="number" value="' . $Quantity . '" min="1" max="11"></td>
+                                            <td>
+                                                <form id="frm' . $pizzaId . '">
+                                                    <input type="hidden" name="pizzaId" value="' . $pizzaId . '">
+                                                    <input type="number" name="quantity" value="' . $Quantity . '" class="text-center" onchange="updateCart(' . $pizzaId . ')" onkeyup="return false" style="width:60px" min=1 oninput="check(this)" onClick="this.select();">
+                                                </form>
+                                            </td>
+                                            <td>' . $total . '</td>
                                             <td>
                                                 <form action="partials/_manageCart.php" method="POST">
                                                     <button name="removeItem" class="btn btn-sm btn-outline-danger">Remove</button>
@@ -140,31 +147,35 @@
     <?php 
     }
     else {
-        echo '
-        <div class="alert alert-info">
+        echo '<div class="container" style="min-height : 610px;">
+        <div class="alert alert-info my-3">
             <font style="font-size:22px"><center>Before checkout you need to <strong><a class="alert-link" data-toggle="modal" data-target="#loginModal">Login</a></strong></center></font>
-        </div>';
+        </div></div>';
     }
     ?>
 
     <?php require 'partials/_footer.php' ?>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>         
     <script>
-        $(document).ready(function(){
-            $("#quantity<?php echo $pizzaId; ?>").focusout(function() {
-                console.log(<?php echo $pizzaId; ?>);
-                console.log(parseInt($(this).val()));
-                <?php 
-                    echo $pizzaId;
-                    $updatesql = "UPDATE `viewcart` SET `itemQuantity` = 5 WHERE `pizzaId`=$pizzaId; AND`userId`=$userId";
-                    $updateresult = mysqli_query($conn, $updatesql);
-                ?>
-            });
-        });
-    </script> 
+        function check(input) {
+            if (input.value <= 0) {
+                input.value = 1;
+            }
+        }
+        function updateCart(id) {
+            $.ajax({
+                url: 'partials/_manageCart.php',
+                type: 'POST',
+                data:$("#frm"+id).serialize(),
+                success:function(res) {
+                    location.reload();
+                } 
+            })
+        }
+    </script>
 </body>
 </html>
