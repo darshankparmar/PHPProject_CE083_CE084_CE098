@@ -48,7 +48,6 @@
                         </thead>
                         <tbody>
                             <?php
-                                // $userId = $_SESSION['userId'];
                                 $sql = "SELECT * FROM `viewcart` WHERE `userId`= $userId";
                                 $result = mysqli_query($conn, $sql);
                                 $counter = 0;
@@ -121,7 +120,7 @@
                                 Online Payment 
                             </label>
                         </div><br>
-                        <button type="button" class="btn btn-primary btn-block">go to checkout</button>
+                        <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#checkoutModal">go to checkout</button>
                     </div>
                 </div>
                 <div class="mb-3">
@@ -144,6 +143,7 @@
             </div>
         </div>
     </div>
+                                
     <?php 
     }
     else {
@@ -153,7 +153,7 @@
         </div></div>';
     }
     ?>
-
+    <?php require 'partials/_checkoutModal.php'; ?>
     <?php require 'partials/_footer.php' ?>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
