@@ -71,6 +71,15 @@
         color: #fff
     }
 
+    .track .step.deactive:before {
+        background: #030303;
+    }
+
+    .track .step.deactive .icon {
+        background: #030303;
+        color: #fff
+    }
+
     .track .icon {
         display: inline-block;
         width: 40px;
@@ -189,10 +198,10 @@
                                 } 
                                 elseif($status == 5){
                                     echo '<div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Order Placed</span> </div>
-                                          <div class="step active"> <span class="icon"> <i class="fa fa-times"></i> </span> <span class="text">Order Denied.</span> </div>';
+                                          <div class="step deactive"> <span class="icon"> <i class="fa fa-times"></i> </span> <span class="text">Order Denied.</span> </div>';
                                 }
                                 else {
-                                    echo '<div class="step active"> <span class="icon"> <i class="fa fa-times"></i> </span> <span class="text">Order Cancelled.</span> </div>';
+                                    echo '<div class="step deactive"> <span class="icon"> <i class="fa fa-times"></i> </span> <span class="text">Order Cancelled.</span> </div>';
                                 }
                             ?>
                             </div>
