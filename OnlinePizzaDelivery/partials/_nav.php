@@ -33,9 +33,6 @@ echo '<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             echo '</div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/OnlinePizzaDelivery/tracker">Tracker</a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link" href="viewOrder.php">Your Orders</a>
           </li>
           <li class="nav-item">

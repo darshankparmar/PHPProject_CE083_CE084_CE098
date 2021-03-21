@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 20, 2021 at 09:27 AM
+-- Generation Time: Mar 21, 2021 at 12:44 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.2.34
 
@@ -47,7 +47,7 @@ INSERT INTO `categories` (`categorieId`, `categorieName`, `categorieDesc`, `cate
 (6, 'CHOICE OF CRUSTS', 'Fresh Pan Pizza Tastiest Pan Pizza. ... Domino\'s freshly made pan-baked pizza; deliciously soft ,buttery,extra cheesy and delightfully crunchy.', '2021-03-18 07:55:28'),
 (7, 'BURGER PIZZA', 'Domino’s Pizza Introducing all new Burger Pizza with the tag line looks like a burger, tastes like a pizza. Burger Pizza is burger sized but comes in a small pizza box. It is come with pizza toppings such as herbs, vegetables, tomato sauce and mozzarella,', '2021-03-18 08:06:30'),
 (8, 'CHOICE OF TOPPINGS', 'CHOICE OF TOPPINGS', '2021-03-18 08:13:47'),
-(9, 'Empty', 'Empty', '2021-03-18 09:58:38');
+(9, 'DOSA', 'A dosai or dosa or dose is a thin pancake or crepe, originating from South India, made from a fermented batter predominantly consisting of lentils and rice. It is somewhat similar to a crepe in appearance, although savoury flavours are generally emphasize', '2021-03-18 09:58:38');
 
 -- --------------------------------------------------------
 

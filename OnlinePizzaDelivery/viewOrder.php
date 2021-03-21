@@ -8,7 +8,8 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <title>About Us</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+    <title>Your Order</title>
 <style>
     .footer {
       position: fixed;
@@ -121,12 +122,18 @@
         counter-increment: section;
         content: counter(section);
     }
+    
+
 </style>
+
 </head>
 <body>
     <?php include 'partials/_dbconnect.php';?>
     <?php include 'partials/_nav.php';?>
-    
+    <?php 
+    if($loggedin){
+    ?>
+
     <div class="container">
     <div class="table-wrapper" id="empty">
         <div class="table-title">
@@ -144,14 +151,13 @@
         <table class="table table-striped table-hover text-center">
             <thead>
                 <tr>
-                    <th>No.</th>
                     <th>Order Id</th>
                     <th>Address</th>
                     <th>Phone No</th>
                     <th>Amount</th>						
                     <th>Payment Mode</th>
-                    <th>Status</th>						
                     <th>Order Date</th>
+                    <th>Status</th>						
                     <th>Items</th>
                 </tr>
             </thead>
@@ -166,74 +172,62 @@
                         $zipCode = $row['zipCode'];
                         $phoneNo = $row['phoneNo'];
                         $amount = $row['amount'];
-                        $paymentMode = $row['paymentMode'];
-                        $orderStatus = $row['orderStatus'];
                         $orderDate = $row['orderDate'];
-
-                        // $mysql = "SELECT * FROM `pizza` WHERE pizzaId = $pizzaId";
-                        // $myresult = mysqli_query($conn, $mysql);
-                        // $myrow = mysqli_fetch_assoc($myresult);
-                        // $pizzaName = $myrow['pizzaName'];
-                        // $pizzaPrice = $myrow['pizzaPrice'];
-                        // $total = $pizzaPrice * $Quantity;
+                        $paymentMode = $row['paymentMode'];
+                        if($paymentMode == 0) {
+                            $paymentMode = "Cash on Delivery";
+                        }
+                        else {
+                            $paymentMode = "Online";
+                        }
+                        $orderStatus = $row['orderStatus'];
+                        
                         $counter++;
-                        // $totalPrice = $totalPrice + $total;
-
+                        
                         echo '<tr>
-                                <td>' . $counter . '</td>
                                 <td>' . $orderId . '</td>
-                                <td>' . $address . '</td>
+                                <td>' . substr($address, 0, 20) . '...</td>
                                 <td>' . $phoneNo . '</td>
                                 <td>' . $amount . '</td>
                                 <td>' . $paymentMode . '</td>
-                                <td>' . $orderStatus . '</td>
                                 <td>' . $orderDate . '</td>
-                                <td><a href="#" id="click' . $orderId . '" onclick="" class="view" title="View Details"><i class="material-icons">&#xE5C8;</i></a></td>
+                                <td><a href="#" data-toggle="modal" data-target="#orderStatus' . $orderId . '" class="view"><i class="material-icons">&#xE5C8;</i></a></td>
+                                <td><a href="#" data-toggle="modal" data-target="#orderItem' . $orderId . '" class="view" title="View Details"><i class="material-icons">&#xE5C8;</i></a></td>
+                                
                             </tr>';
                     }
+                    
                     if($counter==0) {
                         ?><script> document.getElementById("empty").innerHTML = '<div class="col-md-12 my-5"><div class="card"><div class="card-body cart"><div class="col-sm-12 empty-cart-cls text-center"> <img src="https://i.imgur.com/dCdflKN.png" width="130" height="130" class="img-fluid mb-4 mr-3"><h3><strong>You have not ordered any items.</strong></h3><h4>Please order to make me happy :)</h4> <a href="index.php" class="btn btn-primary cart-btn-transform m-3" data-abc="true">continue shopping</a> </div></div></div></div>';</script> <?php
                         // require "partials/_footer.php";
                         exit();
                     }
                 ?>
-                <!-- <tr>
-                    <td class="count">1</td>
-                    <td>1</td>
-                    <td>dkp</td>
-                    <td>dkp@gmail</td>
-                    <td>5555555</td>                        
-                    <td>55/2/2/</td>
-                    <td>555</td>
-                    <td>555</td>
-                    <td><a href="#" id="click.order_id" class="view" title="View Details"><i class="material-icons">&#xE5C8;</i></a></td>
-                </tr> -->
-                
             </tbody>
         </table>
-        <div id="citems">
-        </div>
     </div>
 </div> 
 
+    <?php 
+    }
+    else {
+        echo '<div class="container" style="min-height : 610px;">
+        <div class="alert alert-info my-3">
+            <font style="font-size:22px"><center>Check your Order. You need to <strong><a class="alert-link" data-toggle="modal" data-target="#loginModal">Login</a></strong></center></font>
+        </div></div>';
+    }
+    ?>
 
-    <?php include 'partials/_footer.php';?> 
-
+    <?php 
+    include 'partials/_orderItemModal.php';
+    include 'partials/_orderStatusModal.php';
+    require 'partials/_footer.php';?> 
+    
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>         
-    <!-- <?php
-    echo '<script>
-            function viewItem(id) { ';
-                
-                $a = "document.writeln(id)";
-                echo $a;
-                // echo var_dump($a);
-        echo'    
-            }
-        </script>';
-    ?> -->
+    
   </body>
 </html>
