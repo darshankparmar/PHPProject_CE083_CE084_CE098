@@ -34,8 +34,8 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <b><label for="password">Password:</label></b>
-                    <input class="form-control" id="password" name="password" placeholder="Enter Password" type="password" required minlength="4" maxlength="21">
+                    <b><label for="password">Password:</label></b>    
+                    <input class="form-control" id="password" name="password" placeholder="Enter Password" type="password" required minlength="4" maxlength="21" data-toggle="password">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>

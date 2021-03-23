@@ -113,6 +113,7 @@
         border-color: #ff2b00;
         border-radius: 1px
     }
+    
 </style>
 <?php 
     $statusmodalsql = "SELECT * FROM `orders` WHERE `userId`= $userId";
@@ -145,12 +146,11 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" id="printThis">
                 <div class="container" style="padding-right: 0px;padding-left: 0px;">
                     <article class="card">
                         <div class="card-body">
-                        
-                            <h6>Order ID: #<?php echo $orderid; ?></h6>
+                            <h6><strong>Order ID:</strong> #<?php echo $orderid; ?></h6>
                             <article class="card">
                                 <div class="card-body row">
                                     <div class="col"> <strong>Estimated Delivery time:</strong> <br>30 minute </div>
@@ -216,3 +216,4 @@
 <?php
     }
 ?>
+
