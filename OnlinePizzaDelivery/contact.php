@@ -149,7 +149,6 @@
                           </div>
                           <div class="col-lg-12">
                             <div class="form-group  mt-3">
-                                <!-- <b><label for="message">How May We Help You ?</label></b> -->
                                 <textarea class="form-control" id="message" name="message" rows="2" required minlength="6" placeholder="How May We Help You ?"></textarea>
                             </div>
                           </div>
@@ -160,22 +159,32 @@
                       </form>
                     </div>
                   </div>
-                  <!-- https://www.wrappixel.com/demos/ui-kit/wrapkit/assets/images/contact/1.jpg -->
-                  <div class="col-lg-4 bg-image" style="background-image:url(img/contact.jpg)">
-                    <div class="detail-box p-4">
-                      <h5 class="text-white font-weight-light mb-3">ADDRESS</h5>
-                      <p class="text-white op-7">601 Sherwood Ave.
-                        <br> San Bernandino</p>
-                      <h5 class="text-white font-weight-light mb-3 mt-4">CALL US</h5>
-                      <p class="text-white op-7">251 546 9442
-                        <br> 630 446 8851</p>
-                      <div class="round-social light">
-                        <a href="https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=darshanparmar263@gmail.com" class="ml-0 text-decoration-none text-white border border-white rounded-circle" target="_blank"><i class="far fa-envelope"></i></a>
-                        <a href="https://github.com/darshankparmar" class="text-decoration-none text-white border border-white rounded-circle" target="_blank"><i class="fab fa-github"></i></i></a>
-                        <a href="https://youtube.com/" class="text-decoration-none text-white border border-white rounded-circle" target="_blank"><i class="fab fa-youtube"></i></a>
-                      </div>
-                    </div>
-                  </div>
+                  <?php
+                    $sql = "SELECT * FROM `sitedetail`";
+                    $result = mysqli_query($conn, $sql);
+                    $row = mysqli_fetch_assoc($result);
+
+                    $systemName = $row['systemName'];
+                    $address = $row['address'];
+                    $email = $row['email'];
+                    $contact1 = $row['contact1'];
+                    $contact2 = $row['contact2'];
+
+                    echo '<div class="col-lg-4 bg-image" style="background-image:url(img/contact.jpg)">
+                          <div class="detail-box p-4">
+                            <h5 class="text-white font-weight-light mb-3">ADDRESS</h5>
+                            <p class="text-white op-7">' .$address. '</p>
+                            <h5 class="text-white font-weight-light mb-3 mt-4">CALL US</h5>
+                            <p class="text-white op-7">' .$contact1. '
+                              <br> ' .$contact2. '</p>
+                            <div class="round-social light">
+                              <a href="https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=' .$email. '" class="ml-0 text-decoration-none text-white border border-white rounded-circle" target="_blank"><i class="far fa-envelope"></i></a>
+                              <a href="https://github.com/darshankparmar" class="text-decoration-none text-white border border-white rounded-circle" target="_blank"><i class="fab fa-github"></i></i></a>
+                              <a href="https://youtube.com/" class="text-decoration-none text-white border border-white rounded-circle" target="_blank"><i class="fab fa-youtube"></i></a>
+                            </div>
+                          </div>
+                        </div>';
+                  ?>
                 </div>
               </div>
             </div>

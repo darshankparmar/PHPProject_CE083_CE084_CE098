@@ -9,9 +9,14 @@ else{
   $userId = 0;
 }
 
+$sql = "SELECT * FROM `sitedetail`";
+$result = mysqli_query($conn, $sql);
+$row = mysqli_fetch_assoc($result);
+
+$systemName = $row['systemName'];
 
 echo '<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="index.php">My Awesome Cart</a>
+      <a class="navbar-brand" href="index.php">'.$systemName.'</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>

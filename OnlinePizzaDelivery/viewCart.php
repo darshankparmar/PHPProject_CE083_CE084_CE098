@@ -25,6 +25,9 @@
     
     <div class="container" id="cont">
         <div class="row" id="empty">
+            <div class="alert alert-info mb-0" style="width: -webkit-fill-available;">
+              <strong>Info!</strong> online payment are currently disabled so please choose cash on delivery.
+            </div>
             <div class="col-lg-12 text-center border rounded bg-light my-3">
                 <h1>My Cart</h1>
             </div>
