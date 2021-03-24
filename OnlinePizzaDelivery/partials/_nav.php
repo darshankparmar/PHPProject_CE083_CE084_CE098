@@ -47,6 +47,7 @@ echo '<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
           <li class="nav-item">
             <a class="nav-link" href="contact.php">Contact Us</a>
           </li>
+          
         </ul>
         <form method="get" action="/OnlinePizzaDelivery/search.php" class="form-inline my-2 my-lg-0 mx-3">
           <input class="form-control mr-sm-2" type="search" name="search" id="search" placeholder="Search" aria-label="Search" required>

@@ -11,6 +11,31 @@
     
     <title>Contact Us</title>
     <style>
+       .icon-badge-group .icon-badge-container {
+          display: inline-block;
+        
+        }
+        .icon-badge-container {
+          
+          position: absolute;
+        }
+        .icon-badge-icon {
+          font-size: 30px;
+          color: rgb(0 0 0 / 50%);
+          position: relative;
+        }
+        .icon-badge {
+          background-color: #979797;;
+          font-size: 10px;
+          color: white;
+          text-align: center;
+          width: 15px;
+          height: 15px;
+          border-radius: 49%;
+          position: relative;
+          top: -35px;
+          left: 17px;
+        }
       .footer.container-fluid.bg-dark.text-light {
           position:fixed;
           bottom:0;
@@ -106,7 +131,17 @@
                 <div class="row">
                   <div class="col-lg-8">
                     <div class="contact-box p-4">
-                      <h4 class="title">Contact Us</h4>
+                      <div class="row">
+                        <div class="col-lg-8">
+                          <h4 class="title">Contact Us</h4>
+                        </div>
+                        <div class="col-lg-4">
+                          <div class="icon-badge-container mx-1" style="padding-left: 167px;">
+                            <a href=""><i class="far fa-envelope icon-badge-icon"></i></a>
+                            <div class="icon-badge"><b>5</b></div>
+                          </div>
+                        </div>
+                      </div>
                       <?php
                           $passSql = "SELECT * FROM users WHERE id='$userId'"; 
                           $passResult = mysqli_query($conn, $passSql);

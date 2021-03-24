@@ -181,7 +181,7 @@ a{
   }
 
   /*Show navbar desktop*/
-  .show{
+  .showa{
     width: calc(var(--nav-width) + 156px);
   }
 

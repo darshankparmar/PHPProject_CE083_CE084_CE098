@@ -1,1 +1,1 @@
-<h1>Welcome <?php echo $username; ?></h1>
+<h1 style="margin-top:98px">Welcome back <b><?php echo $_SESSION['username']; ?></b></h1>

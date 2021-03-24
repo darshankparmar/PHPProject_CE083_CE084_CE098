@@ -3,7 +3,6 @@
     if(isset($_SESSION['loggedin']) && $_SESSION['loggedin']==true){
         $loggedin= true;
         $userId = $_SESSION['userId'];
-        $username = $_SESSION['username'];
     }
     else{
         $loggedin = false;
@@ -28,8 +27,9 @@
 
 </head>
 <body id="body-pd" style="background: #80808045;">
-
+     
     <?php
+   
         require 'partials/_dbconnect.php';
         require 'partials/_nav.php';
 
