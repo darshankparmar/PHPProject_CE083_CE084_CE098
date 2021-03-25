@@ -1,5 +1,5 @@
 # PHPProject_CE083_CE084_CE098
- 
+
 ## PHP PROJECT
 
 👉 Download the zip file
@@ -25,8 +25,11 @@
     
 ## Credential for user panel :
 
-    username:"dkp" password:"Dkp@4321"
     usernam:"user" password:"user"
+    
+ ## Credential for Admin panel :
+
+    username:"dkp" password:"Dkp@4321"
 
 ## Members
 * Darshan Parmar [@darshankparmar](https://github.com/darshankparmar)
