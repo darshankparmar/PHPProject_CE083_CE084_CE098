@@ -14,7 +14,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $userId = $row['id'];
             if (password_verify($password, $row['password'])){ 
                 session_start();
-                $_SESSION['loggedin'] = true;
+                $_SESSION['adminloggedin'] = true;
                 $_SESSION['username'] = $username;
                 $_SESSION['userId'] = $userId;
                 header("location: /OnlinePizzaDelivery/admin/index.php?loginsuccess=true");

@@ -1,6 +1,6 @@
 <?php 
     session_start();
-    if(isset($_SESSION['loggedin']) && $_SESSION['loggedin']==true){
+    if(isset($_SESSION['adminloggedin']) && $_SESSION['adminloggedin']==true){
         $loggedin= true;
         $userId = $_SESSION['userId'];
     }
