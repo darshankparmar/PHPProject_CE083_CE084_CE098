@@ -25,7 +25,7 @@
     
 ## Credential for user panel :
 
-    usernam:"user" password:"user"
+    usernam:"admin" password:"admin"
     
  ## Credential for Admin panel :
 
