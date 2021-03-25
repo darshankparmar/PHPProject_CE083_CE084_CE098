@@ -16,6 +16,7 @@
             <thead style="background-color: rgb(111 202 203);">
                 <tr>
                     <th>Order Id</th>
+                    <th>User Id</th>
                     <th>Address</th>
                     <th>Phone No</th>
                     <th>Amount</th>						
@@ -51,6 +52,7 @@
                         
                         echo '<tr>
                                 <td>' . $orderId . '</td>
+                                <td>' . $Id . '</td>
                                 <td>' . substr($address, 0, 20) . '...</td>
                                 <td>' . $phoneNo . '</td>
                                 <td>' . $amount . '</td>
