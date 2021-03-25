@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 25, 2021 at 01:56 PM
+-- Generation Time: Mar 25, 2021 at 06:22 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.2.34
 
@@ -100,6 +100,32 @@ INSERT INTO `contactreply` (`id`, `contactId`, `userId`, `message`, `datetime`) 
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `deliverydetails`
+--
+
+CREATE TABLE `deliverydetails` (
+  `id` int(21) NOT NULL,
+  `orderId` int(21) NOT NULL,
+  `deliveryBoyName` varchar(35) NOT NULL,
+  `deliveryBoyPhoneNo` bigint(25) NOT NULL,
+  `deliveryTime` int(200) NOT NULL COMMENT 'Time in minutes',
+  `dateTime` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `deliverydetails`
+--
+
+INSERT INTO `deliverydetails` (`id`, `orderId`, `deliveryBoyName`, `deliveryBoyPhoneNo`, `deliveryTime`, `dateTime`) VALUES
+(1, 1, 'Jayesh Hadiya', 1212121212, 30, '2021-03-25 18:53:19'),
+(2, 2, 'Kamlesh Jadeja', 1212121212, 30, '2021-03-25 18:55:34'),
+(3, 5, 'Jayesh Hadiya', 1212121212, 30, '2021-03-25 18:58:56'),
+(4, 3, 'Mahesh J', 1111111111, 25, '2021-03-25 22:37:05'),
+(5, 7, 'Rajesh V', 9173916549, 25, '2021-03-25 22:37:41');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `orderitems`
 --
 
@@ -139,7 +165,16 @@ INSERT INTO `orderitems` (`id`, `orderId`, `pizzaId`, `itemQuantity`) VALUES
 (22, 5, 40, 2),
 (23, 6, 47, 10),
 (24, 6, 48, 8),
-(25, 6, 49, 2);
+(25, 6, 49, 2),
+(26, 7, 14, 7),
+(27, 7, 15, 1),
+(28, 7, 16, 1),
+(29, 7, 1, 2),
+(30, 7, 2, 2),
+(31, 7, 3, 1),
+(32, 7, 4, 2),
+(33, 7, 5, 3),
+(34, 7, 6, 1);
 
 -- --------------------------------------------------------
 
@@ -169,7 +204,8 @@ INSERT INTO `orders` (`orderId`, `userId`, `address`, `zipCode`, `phoneNo`, `amo
 (3, 4, 'kuber nagar fvgbh fvgbhj cfvgbhj rftgyjn drtfgvy, surat', 395006, 9173916549, 696, '0', '4', '2021-03-20 20:34:52'),
 (4, 3, '124, kuber nagar, near ishwarkrupa, surat', 395006, 9173916549, 2188, '0', '5', '2021-03-21 13:37:44'),
 (5, 3, 'kuber nagar, surat', 395006, 8888888888, 2678, '0', '4', '2021-03-21 17:04:49'),
-(6, 3, 'kuber nagar, surat', 395006, 9173916549, 2700, '0', '6', '2021-03-21 17:06:38');
+(6, 3, 'kuber nagar, surat', 395006, 9173916549, 2700, '0', '6', '2021-03-21 17:06:38'),
+(7, 3, 'l b avenue, surat', 395006, 9173916549, 4400, '0', '2', '2021-03-25 19:24:39');
 
 -- --------------------------------------------------------
 
@@ -321,9 +357,6 @@ CREATE TABLE `viewcart` (
 INSERT INTO `viewcart` (`cartItemId`, `pizzaId`, `itemQuantity`, `userId`, `addedDate`) VALUES
 (12, 1, 1, 4, '2021-03-21 11:37:53'),
 (13, 2, 1, 4, '2021-03-21 11:37:55'),
-(30, 14, 7, 3, '2021-03-22 08:14:37'),
-(31, 15, 1, 3, '2021-03-22 08:14:39'),
-(32, 16, 1, 3, '2021-03-22 08:14:40'),
 (33, 1, 1, 1, '2021-03-23 11:32:13'),
 (34, 2, 1, 1, '2021-03-23 11:32:14'),
 (35, 3, 1, 1, '2021-03-23 11:32:15'),
@@ -351,6 +384,13 @@ ALTER TABLE `contact`
 --
 ALTER TABLE `contactreply`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `deliverydetails`
+--
+ALTER TABLE `deliverydetails`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `orderId` (`orderId`);
 
 --
 -- Indexes for table `orderitems`
@@ -413,16 +453,22 @@ ALTER TABLE `contactreply`
   MODIFY `id` int(21) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT for table `deliverydetails`
+--
+ALTER TABLE `deliverydetails`
+  MODIFY `id` int(21) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT for table `orderitems`
 --
 ALTER TABLE `orderitems`
-  MODIFY `id` int(21) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(21) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `orderId` int(21) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `orderId` int(21) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `pizza`
@@ -446,7 +492,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `viewcart`
 --
 ALTER TABLE `viewcart`
-  MODIFY `cartItemId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `cartItemId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

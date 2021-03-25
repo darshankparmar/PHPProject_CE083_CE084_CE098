@@ -53,7 +53,7 @@
                         echo '<tr>
                                 <td>' . $orderId . '</td>
                                 <td>' . $Id . '</td>
-                                <td>' . substr($address, 0, 20) . '...</td>
+                                <td data-toggle="tooltip" title="' .$address. '">' . substr($address, 0, 20) . '...</td>
                                 <td>' . $phoneNo . '</td>
                                 <td>' . $amount . '</td>
                                 <td>' . $paymentMode . '</td>
@@ -70,11 +70,15 @@
 </div> 
 
 <?php 
-    include 'partials/_orderManage.php';
+    include 'partials/_orderItemModal.php';
+    include 'partials/_orderStatusModal.php';
 ?>
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <style>
+    .tooltip.show {
+        top: -62px !important;
+    }
     
     .table-wrapper .btn {
         float: right;
@@ -179,3 +183,9 @@
     
 
 </style>
+
+<script>
+$(document).ready(function(){
+  $('[data-toggle="tooltip"]').tooltip();
+});
+</script>

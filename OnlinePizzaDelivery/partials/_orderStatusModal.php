@@ -135,6 +135,25 @@
             $tstatus = "Order Denied.";
         else
             $tstatus = "Order Cancelled.";
+
+        if($status >= 1 && $status <= 4) {
+            $deliveryDetailSql = "SELECT * FROM `deliverydetails` WHERE `orderId`= $orderid";
+            $deliveryDetailResult = mysqli_query($conn, $deliveryDetailSql);
+            $deliveryDetailRow = mysqli_fetch_assoc($deliveryDetailResult);
+            $trackId = $deliveryDetailRow['id'];
+            $deliveryBoyName = $deliveryDetailRow['deliveryBoyName'];
+            $deliveryBoyPhoneNo = $deliveryDetailRow['deliveryBoyPhoneNo'];
+            $deliveryTime = $deliveryDetailRow['deliveryTime'];
+            if($status == 4)
+                $deliveryTime = 'xx';
+        }
+        else {
+            $trackId = 'xxxxx';
+            $deliveryBoyName = '';
+            $deliveryBoyPhoneNo = '';
+            $deliveryTime = 'xx';
+        }
+
 ?>
 <!-- Modal -->
 <div class="modal fade" id="orderStatus<?php echo $orderid; ?>" tabindex="-1" role="dialog" aria-labelledby="orderStatus<?php echo $orderid; ?>" aria-hidden="true">
@@ -153,10 +172,10 @@
                             <h6><strong>Order ID:</strong> #<?php echo $orderid; ?></h6>
                             <article class="card">
                                 <div class="card-body row">
-                                    <div class="col"> <strong>Estimated Delivery time:</strong> <br>30 minute </div>
-                                    <div class="col"> <strong>Shipping BY:</strong> <br> BLUEDART, | <i class="fa fa-phone"></i> +1598675986 </div>
+                                    <div class="col"> <strong>Estimated Delivery time:</strong> <br><?php echo $deliveryTime; ?> minute </div>
+                                    <div class="col"> <strong>Shipping By:</strong> <br> <?php echo $deliveryBoyName; ?> | <i class="fa fa-phone"></i> <?php echo $deliveryBoyPhoneNo; ?> </div>
                                     <div class="col"> <strong>Status:</strong> <br> <?php echo $tstatus; ?> </div>
-                                    <div class="col"> <strong>Tracking #:</strong> <br> BD045903594059 </div>
+                                    <div class="col"> <strong>Tracking #:</strong> <br> <?php echo $trackId; ?> </div>
                                 </div>
                             </article>
                             <div class="track">
