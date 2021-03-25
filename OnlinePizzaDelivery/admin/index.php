@@ -1,15 +1,15 @@
 <?php 
     session_start();
     if(isset($_SESSION['adminloggedin']) && $_SESSION['adminloggedin']==true){
-        $loggedin= true;
-        $userId = $_SESSION['userId'];
+        $adminloggedin= true;
+        $userId = $_SESSION['adminuserId'];
     }
     else{
-        $loggedin = false;
+        $adminloggedin = false;
         $userId = 0;
     }
 
-    if($loggedin) {
+    if($adminloggedin) {
 ?>
 <!doctype html>
 <html lang="en">

@@ -2,8 +2,12 @@
 
 session_start();
 echo "Logging you out. Please wait...";
-session_unset();
-session_destroy();
+unset($_SESSION["loggedin"]);
+unset($_SESSION["username"]);
+unset($_SESSION["userId"]);
 
-header('Location: ' . $_SERVER['HTTP_REFERER']);
+// session_unset();
+// session_destroy();
+
+header("location: /OnlinePizzaDelivery/index.php");
 ?>

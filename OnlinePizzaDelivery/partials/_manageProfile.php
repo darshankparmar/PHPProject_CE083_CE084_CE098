@@ -7,20 +7,20 @@
     if(isset($_POST["updateProfilePic"])){
         $check = getimagesize($_FILES["image"]["tmp_name"]);
         if($check !== false) {
-            $image = $_FILES['image']['tmp_name'];
-            $imgContent = addslashes(file_get_contents($image));
+            $newfilename = "person-".$userId.".jpg";
 
-            $sql = "UPDATE `users` SET `profilePhoto` = '$imgContent' WHERE `id` ='$userId'";   
-            $result = mysqli_query($conn, $sql);
-            if($result){
-                echo '<script>
-                window.location.href="http://localhost/OnlinePizzaDelivery/viewProfile.php";
-                    </script>';
-            }else{
-                echo '<script>alert("image upload failed, please try again.");
-                        window.history.back(1);
-                    </script>';
-            } 
+            $uploaddir = $_SERVER['DOCUMENT_ROOT'].'/OnlinePizzaDelivery/img/';
+            $uploadfile = $uploaddir . $newfilename;
+
+            if (move_uploaded_file($_FILES['image']['tmp_name'], $uploadfile)) {
+                echo "<script>alert('success');
+                        window.location=document.referrer;
+                    </script>";
+            } else {
+                echo "<script>alert('image upload failed, please try again.');
+                        window.location=document.referrer;
+                    </script>";
+            }
         }
         else{
             echo '<script>alert("Please select an image file to upload.");

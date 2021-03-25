@@ -15,7 +15,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $_SESSION['loggedin'] = true;
             $_SESSION['username'] = $username;
             $_SESSION['userId'] = $userId;
-            // echo $_SESSION['userId'];
             header("location: /OnlinePizzaDelivery/index.php?loginsuccess=true");
             exit();
         } 

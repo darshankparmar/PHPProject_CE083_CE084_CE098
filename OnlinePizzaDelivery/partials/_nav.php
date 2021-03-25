@@ -3,6 +3,7 @@ session_start();
 if(isset($_SESSION['loggedin']) && $_SESSION['loggedin']==true){
   $loggedin= true;
   $userId = $_SESSION['userId'];
+  $username = $_SESSION['username'];
 }
 else{
   $loggedin = false;
@@ -69,12 +70,6 @@ echo '<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         </button></a>';
 
         if($loggedin){
-          $sql = "SELECT * FROM users WHERE id='$userId'"; 
-          $result = mysqli_query($conn, $sql);
-          $row=mysqli_fetch_assoc($result);
-          $username = $row['username'];
-          $profilePhoto = base64_encode($row['profilePhoto']);
-
           echo '<ul class="navbar-nav mr-2">
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"> Welcome ' .$username. '</a>
@@ -84,7 +79,7 @@ echo '<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             </li>
           </ul>
           <div class="text-center image-size-small position-relative">
-            <a href="viewProfile.php"><img src="data:image/*;base64,' .$profilePhoto. '" class="rounded-circle" style="width:40px; height:40px"></a>
+            <a href="viewProfile.php"><img src="img/person-' .$userId. '.jpg" class="rounded-circle" onError="this.src = \'img/profilePic.jpg\'" style="width:40px; height:40px"></a>
           </div>';
         }
         else {

@@ -140,12 +140,19 @@
             $lastName = $row['lastName'];
             $email = $row['email'];
             $phone = $row['phone'];
-            $profilePhoto = base64_encode($row['profilePhoto']);
+            $userType = $row['userType'];
+            if($userType == 0) {
+                $userType = "User";
+            }
+            else {
+                $userType = "Admin";
+            }
+
         ?>
         <div class="row">
             <div class="jumbotron p-3 mb-3" style="display: flex;justify-content: center;width: 28%;border-radius: 50px;margin: 0 auto;">
                 <div class="user-info">
-                    <img class="rounded-circle mb-3 bg-dark" src="data:image/*;base64,<?php echo $profilePhoto; ?>" style="width:215px;height:215px;padding:1px;">
+                    <img class="rounded-circle mb-3 bg-dark" src="img/person-<?php echo $userId; ?>.jpg" onError="this.src = 'img/profilePic.jpg'" style="width:215px;height:215px;padding:1px;">
                     <form action="partials/_manageProfile.php" method="POST" enctype="multipart/form-data">
                         <div class="upload-btn-wrapper">
                             <small>Change Image:</small>
@@ -157,7 +164,7 @@
                     <ul class="meta list list-unstyled" style="text-align:center;">
                         <li class="username my-2"><a href="viewProfile.php">@<?php echo $username ?></a></li>
                         <li class="name"><?php echo $firstName." ".$lastName; ?>
-                            <label class="label label-info">(User)</label>
+                            <label class="label label-info">(<?php echo $userType ?>)</label>
                         </li>
                         <li class="email"><?php echo $email ?></li>
                         <li class="my-2"><a href="partials/_logout.php"><button class="btn btn-primary">Logout</button></a></li>
@@ -166,7 +173,7 @@
             </div>
             <div class="content-panel mb-3" style="display: flex;justify-content: center;">
                 <div class="border p-3" style="border: 2px solid rgba(0, 0, 0, 0.1);border-radius: 1.1rem;background-color: aliceblue;">
-                    <h2 class="title text-center">Profile<span class="pro-label label label-warning"> (User)</span></h2>
+                    <h2 class="title text-center">Profile<span class="pro-label label label-warning"> (<?php echo $userType ?>)</span></h2>
                 
                     <form action="partials/_manageProfile.php" method="post">
                         <div class="form-group">

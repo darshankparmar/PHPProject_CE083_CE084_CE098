@@ -127,7 +127,7 @@
 <div class="modal fade" id="updateItem<?php echo $pizzaId; ?>" tabindex="-1" role="dialog" aria-labelledby="updateItem<?php echo $pizzaId; ?>" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header">
+      <div class="modal-header" style="background-color: rgb(111 202 203);">
         <h5 class="modal-title" id="updateItem<?php echo $pizzaId; ?>">Item Id: <?php echo $pizzaId; ?></h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
@@ -135,7 +135,7 @@
       </div>
       <div class="modal-body">
 	  	<form action="partials/_menuManage.php" method="post" enctype="multipart/form-data">
-		    <div class="text-left my-2 row">
+		    <div class="text-left my-2 row" style="border-bottom: 2px solid #dee2e6;">
 		   		<div class="form-group col-md-8">
 					<b><label for="image">Image</label></b>
 					<input type="file" name="itemimage" id="itemimage" accept=".jpg" class="form-control" required style="border:none;" onchange="document.getElementById('itemPhoto').src = window.URL.createObjectURL(this.files[0])">

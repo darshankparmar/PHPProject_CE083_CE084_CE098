@@ -67,48 +67,48 @@
 	</div>
 </div>
 
-<?php 
-    $contactsql = "SELECT * FROM `contact`";
-    $contactResult = mysqli_query($conn, $contactsql);
-    while($contactRow = mysqli_fetch_assoc($contactResult)){
-        $contactId = $contactRow['contactId'];
-        $Id = $contactRow['userId'];
-?>
+    <?php 
+        $contactsql = "SELECT * FROM `contact`";
+        $contactResult = mysqli_query($conn, $contactsql);
+        while($contactRow = mysqli_fetch_assoc($contactResult)){
+            $contactId = $contactRow['contactId'];
+            $Id = $contactRow['userId'];
+    ?>
 
-<!-- Reply Modal -->
-<div class="modal fade" id="reply<?php echo $contactId; ?>" tabindex="-1" role="dialog" aria-labelledby="reply<?php echo $contactId; ?>" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="reply<?php echo $contactId; ?>">Reply (Contact Id: <?php echo $contactId; ?>)</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form action="partials/_contactManage.php" method="post">
-            <div class="text-left my-2">
-                <b><label for="message">Message: </label></b>
-                <textarea class="form-control" id="message" name="message" rows="2" required minlength="5"></textarea>
-            </div>
-            <input type="hidden" id="contactId" name="contactId" value="<?php echo $contactId; ?>">
-            <input type="hidden" id="userId" name="userId" value="<?php echo $Id; ?>">
-            <button type="submit" class="btn btn-success" name="contactReply">Reply</button>
-        </form>
+    <!-- Reply Modal -->
+    <div class="modal fade" id="reply<?php echo $contactId; ?>" tabindex="-1" role="dialog" aria-labelledby="reply<?php echo $contactId; ?>" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header" style="background-color: rgb(111 202 203);">
+            <h5 class="modal-title" id="reply<?php echo $contactId; ?>">Reply (Contact Id: <?php echo $contactId; ?>)</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form action="partials/_contactManage.php" method="post">
+                <div class="text-left my-2">
+                    <b><label for="message">Message: </label></b>
+                    <textarea class="form-control" id="message" name="message" rows="2" required minlength="5"></textarea>
+                </div>
+                <input type="hidden" id="contactId" name="contactId" value="<?php echo $contactId; ?>">
+                <input type="hidden" id="userId" name="userId" value="<?php echo $Id; ?>">
+                <button type="submit" class="btn btn-success" name="contactReply">Reply</button>
+            </form>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
 
-<?php
-    }
-?>
+    <?php
+        }
+    ?>
 
     <!-- history Modal -->
     <div class="modal fade" id="history" tabindex="-1" role="dialog" aria-labelledby="history" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
           <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header" style="background-color: rgb(187 188 189);">
               <h5 class="modal-title" id="history">Your Sent Message</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>

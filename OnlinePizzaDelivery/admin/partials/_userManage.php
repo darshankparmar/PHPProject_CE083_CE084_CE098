@@ -21,7 +21,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         $userType = $_POST["userType"];
         $password = $_POST["password"];
         $cpassword = $_POST["cpassword"];
-        // $profilePhoto = $_SERVER['DOCUMENT_ROOT'].'/OnlinePizzaDelivery/img/profilePic.jpg';
         
         // Check whether this username exists
         $existSql = "SELECT * FROM `users` WHERE username = '$username'";
@@ -52,6 +51,53 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                     window.location=document.referrer;
                 </script>";
             }
+        }
+    }
+    if(isset($_POST['editUser'])) {
+        $id = $_POST["userId"];
+        $firstName = $_POST["firstName"];
+        $lastName = $_POST["lastName"];
+        $email = $_POST["email"];
+        $phone = $_POST["phone"];
+        $userType = $_POST["userType"];
+
+        $sql = "UPDATE `users` SET `firstName`='$firstName', `lastName`='$lastName', `email`='$email', `phone`='$phone', `userType`='$userType' WHERE `id`='$id'";   
+        $result = mysqli_query($conn, $sql);
+        if ($result){
+            echo "<script>alert('update successfully');
+                window.location=document.referrer;
+                </script>";
+        }
+        else {
+            echo "<script>alert('failed');
+                window.location=document.referrer;
+                </script>";
+        }
+    }
+    
+    if(isset($_POST['updateProfilePhoto'])) {
+        $id = $_POST["userId"];
+        $check = getimagesize($_FILES["userimage"]["tmp_name"]);
+        if($check !== false) {
+            $newfilename = "person-".$id.".jpg";
+
+            $uploaddir = $_SERVER['DOCUMENT_ROOT'].'/OnlinePizzaDelivery/img/';
+            $uploadfile = $uploaddir . $newfilename;
+
+            if (move_uploaded_file($_FILES['userimage']['tmp_name'], $uploadfile)) {
+                echo "<script>alert('success');
+                        window.location=document.referrer;
+                    </script>";
+            } else {
+                echo "<script>alert('failed');
+                        window.location=document.referrer;
+                    </script>";
+            }
+        }
+        else{
+            echo '<script>alert("Please select an image file to upload.");
+            window.location=document.referrer;
+                </script>';
         }
     }
 }

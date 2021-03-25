@@ -99,7 +99,7 @@
 <div class="modal fade" id="updateCat<?php echo $catId; ?>" tabindex="-1" role="dialog" aria-labelledby="updateCat<?php echo $catId; ?>" aria-hidden="true" style="width: -webkit-fill-available;">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
-      <div class="modal-header">
+      <div class="modal-header" style="background-color: rgb(111 202 203);">
         <h5 class="modal-title" id="updateCat<?php echo $catId; ?>">Category Id: <b><?php echo $catId; ?></b></h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
@@ -107,7 +107,7 @@
       </div>
       <div class="modal-body">
         <form action="partials/_categoryManage.php" method="post" enctype="multipart/form-data">
-		    <div class="text-left my-2 row">
+		    <div class="text-left my-2 row" style="border-bottom: 2px solid #dee2e6;">
 		   		<div class="form-group col-md-8">
 					<b><label for="image">Image</label></b>
 					<input type="file" name="catimage" id="catimage" accept=".jpg" class="form-control" required style="border:none;" onchange="document.getElementById('itemPhoto').src = window.URL.createObjectURL(this.files[0])">

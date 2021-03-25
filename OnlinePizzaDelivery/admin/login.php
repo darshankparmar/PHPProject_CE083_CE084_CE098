@@ -63,7 +63,7 @@
     <main id="main" class=" bg-dark">
         <div id="login-left">
         <div class="logo">
-            <img src="http://localhost/fos/assets/img/sample_logo.png" alt="">
+            <img src="http://localhost/OnlinePizzaDelivery/img/sample_logo.png" alt="">
         </div>
         </div>
         <div id="login-right">
@@ -71,11 +71,11 @@
             <div class="card-body">
             <form action="partials/_handleLogin.php" method="post">
                 <div class="form-group">
-                <label for="username" class="control-label">Username</label>
+                <label for="username" class="control-label"><b>Username</b></label>
                 <input type="text" id="username" name="username" class="form-control">
                 </div>
                 <div class="form-group">
-                <label for="password" class="control-label">Password</label>
+                <label for="password" class="control-label"><b>Password</b></label>
                 <input type="password" id="password" name="password" class="form-control">
                 </div>
                 <center><button type="submit" class="btn-sm btn-block btn-wave col-md-4 btn-primary">Login</button></center>
