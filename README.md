@@ -11,6 +11,8 @@
         * For wamp wamp/www
         * For lamp var/www/html)
 
+![Screenshot (572)](https://user-images.githubusercontent.com/67963288/112586842-8406c300-8e22-11eb-9fd2-03fdf37e5e5c.png)
+
 👉 Open PHPMyAdmin (http://localhost/phpmyadmin)
 
     Create a database with name cwh
@@ -19,17 +21,17 @@
 
 👉 Run the script 
 
-    For User Panel: http://localhost/OnlinePizzaDelivery 
-
-    For admin panel: http://localhost/OnlinePizzaDelivery/admin 
+    For User Panel: http://localhost/OnlinePizzaDelivery/
+    
+    For admin panel: http://localhost/OnlinePizzaDelivery/admin/
     
 ## Credential for user panel :
 
-    username:"admin" password:"admin"
+> username:"admin" password:"admin"
     
  ## Credential for Admin panel :
 
-    username:"dkp" password:"Dkp@4321"
+> username:"dkp" password:"Dkp@4321"
 
 ## Members
 * Darshan Parmar [@darshankparmar](https://github.com/darshankparmar)
