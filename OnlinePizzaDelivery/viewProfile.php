@@ -153,21 +153,25 @@
             <div class="jumbotron p-3 mb-3" style="display: flex;justify-content: center;width: 28%;border-radius: 50px;margin: 0 auto;">
                 <div class="user-info">
                     <img class="rounded-circle mb-3 bg-dark" src="img/person-<?php echo $userId; ?>.jpg" onError="this.src = 'img/profilePic.jpg'" style="width:215px;height:215px;padding:1px;">
-                    <form action="partials/_manageProfile.php" method="POST" enctype="multipart/form-data">
+                    <form action="partials/_manageProfile.php" method="POST">
+                        <small>Remove Image: </small><button type="submit" class="btn btn-primary" name="removeProfilePic" style="font-size: 12px;padding: 3px 8px;border-radius: 9px;">remove</button>
+                    </form>
+                    <form action="partials/_manageProfile.php" method="POST" enctype="multipart/form-data" style="margin-top: 7px;">
                         <div class="upload-btn-wrapper">
                             <small>Change Image:</small>
                             <button class="btn upload">choose</button>
                             <input type="file" name="image" id="image" accept="image/*">
                         </div>
-                        <button type="submit" name="updateProfilePic" class="btn btn-primary mb-3">Update</button>
+                        <button type="submit" name="updateProfilePic" class="btn btn-primary" style="margin-top: -20px;font-size: 15px;padding: 3px 8px;">Update</button>
                     </form>
+                    
                     <ul class="meta list list-unstyled" style="text-align:center;">
                         <li class="username my-2"><a href="viewProfile.php">@<?php echo $username ?></a></li>
                         <li class="name"><?php echo $firstName." ".$lastName; ?>
                             <label class="label label-info">(<?php echo $userType ?>)</label>
                         </li>
                         <li class="email"><?php echo $email ?></li>
-                        <li class="my-2"><a href="partials/_logout.php"><button class="btn btn-primary">Logout</button></a></li>
+                        <li class="my-2"><a href="partials/_logout.php"><button class="btn btn-secondary" style="font-size: 15px;padding: 3px 8px;">Logout</button></a></li>
                     </ul>
                 </div>
             </div>

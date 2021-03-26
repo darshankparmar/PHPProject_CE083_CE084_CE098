@@ -57,7 +57,21 @@
                         window.history.back(1);
                     </script>';
         }
-
+    }
+    
+    if(isset($_POST["removeProfilePic"])){
+        $filename = $_SERVER['DOCUMENT_ROOT']."/OnlinePizzaDelivery/img/person-".$userId.".jpg";
+        if (file_exists($filename)) {
+            unlink($filename);
+            echo "<script>alert('Removed');
+                window.location=document.referrer;
+            </script>";
+        }
+        else {
+            echo "<script>alert('no photo available.');
+                window.location=document.referrer;
+            </script>";
+        }
     }
     
 ?>

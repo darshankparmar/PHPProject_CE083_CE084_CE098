@@ -135,12 +135,14 @@
                         <div class="col-lg-8">
                           <h4 class="title">Contact Us</h4>
                         </div>
-                        <div class="col-lg-4">
-                          <div class="icon-badge-container mx-1" style="padding-left: 167px;">
-                            <a href="#" data-toggle="modal" data-target="#adminReply"><i class="far fa-envelope icon-badge-icon"></i></a>
-                            <div class="icon-badge"><b><span id="totalMessage">0</span></b></div>
+                        <?php if($loggedin){ ?>
+                          <div class="col-lg-4">
+                            <div class="icon-badge-container mx-1" style="padding-left: 167px;">
+                              <a href="#" data-toggle="modal" data-target="#adminReply"><i class="far fa-envelope icon-badge-icon"></i></a>
+                              <div class="icon-badge"><b><span id="totalMessage">0</span></b></div>
+                            </div>
                           </div>
-                        </div>
+                        <?php } ?>
                       </div>
                       <?php
                           $passSql = "SELECT * FROM users WHERE id='$userId'"; 
@@ -187,10 +189,17 @@
                                 <textarea class="form-control" id="message" name="message" rows="2" required minlength="6" placeholder="How May We Help You ?"></textarea>
                             </div>
                           </div>
-                          <div class="col-lg-12">
-                            <button type="submit" class="btn btn-danger-gradiant mt-3 mb-3 text-white border-0 py-2 px-3"><span> SUBMIT NOW <i class="ti-arrow-right"></i></span></button>
-                            <button type="button" class="btn btn-danger-gradiant mt-3 mb-3 text-white border-0 py-2 px-3 mx-2" data-toggle="modal" data-target="#history"><span> HISTORY <i class="ti-arrow-right"></i></span></button>
-                          </div>
+                          <?php if($loggedin){ ?>
+                            <div class="col-lg-12">
+                              <button type="submit" class="btn btn-danger-gradiant mt-3 mb-3 text-white border-0 py-2 px-3"><span> SUBMIT NOW <i class="ti-arrow-right"></i></span></button>
+                              <button type="button" class="btn btn-danger-gradiant mt-3 mb-3 text-white border-0 py-2 px-3 mx-2" data-toggle="modal" data-target="#history"><span> HISTORY <i class="ti-arrow-right"></i></span></button>
+                            </div>
+                          <?php }else { ?>
+                            <div class="col-lg-12">
+                              <button type="submit" class="btn btn-danger-gradiant mt-3 text-white border-0 py-2 px-3" disabled><span> SUBMIT NOW <i class="ti-arrow-right"></i></span></button>
+                              <small class="form-text text-muted">First login to Contct with Us.</small>
+                            </div>
+                          <?php } ?>
                         </div>
                       </form>
                     </div>
@@ -238,7 +247,7 @@
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" id="messagebd">
               <table class="table-striped table-bordered col-md-12 text-center">
                 <thead style="background-color: rgb(111 202 203);">
                     <tr>
@@ -263,8 +272,10 @@
                                 <td>' .$datetime. '</td>
                               </tr>';
                     }
-                    
                     echo '<script>document.getElementById("totalMessage").innerHTML = "' .$count. '";</script>';
+                    if($count==0) {
+                      ?><script> document.getElementById("messagebd").innerHTML = '<div class="my-1">you have not recieve any message.</div>';</script> <?php
+                    }
                 ?>
                 </tbody>
 		          </table>
@@ -283,7 +294,7 @@
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" id="bd">
               <table class="table-striped table-bordered col-md-12 text-center">
                 <thead style="background-color: rgb(111 202 203);">
                     <tr>
@@ -297,18 +308,23 @@
                 <?php 
                     $sql = "SELECT * FROM `contact` WHERE `userId`='$userId'"; 
                     $result = mysqli_query($conn, $sql);
+                    $count = 0;
                     while($row=mysqli_fetch_assoc($result)) {
                         $contactId = $row['contactId'];
                         $orderId = $row['orderId'];
                         $message = $row['message'];
                         $datetime = $row['time'];
+                        $count++;
                         echo '<tr>
                                 <td>' .$contactId. '</td>
                                 <td>' .$orderId. '</td>
                                 <td>' .$message. '</td>
                                 <td>' .$datetime. '</td>
                               </tr>';
-                    }                    
+                    }                
+                    if($count==0) {
+                      ?><script> document.getElementById("bd").innerHTML = '<div class="my-1">you have not contacted us.</div>';</script> <?php
+                    }    
                 ?>
                 </tbody>
 		          </table>

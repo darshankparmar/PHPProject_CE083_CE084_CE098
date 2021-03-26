@@ -2,7 +2,7 @@
 <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="signupModal" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
-          <div class="modal-header">
+          <div class="modal-header" style="background-color: rgb(111 202 203);">
             <h5 class="modal-title" id="signupModal">SignUp Here</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
@@ -47,6 +47,8 @@
               </div>
               <button type="submit" class="btn btn-success">Submit</button>
             </form>
+            <p class="mb-0 mt-1">Already have an account? <a href="#" data-dismiss="modal" data-toggle="modal" data-target="#loginModal">Login here</a>.</p>
+            <!-- <button type="button" class="btn btn-success" data-dismiss="modal" data-toggle="modal" data-target="#loginModal">Submit</button> -->
           </div>
         </div>
       </div>

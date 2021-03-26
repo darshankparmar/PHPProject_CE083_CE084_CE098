@@ -20,11 +20,12 @@
 							</div>
                             <div class="form-group">
 								<label class="control-label">Price</label>
-								<input type="number" class="form-control" name="price" required>
+								<input type="number" class="form-control" name="price" required min="1">
 							</div>	
 							<div class="form-group">
 								<label class="control-label">Category: </label>
 								<select name="categoryId" id="categoryId" class="custom-select browser-default" required>
+								<option hidden disabled selected value>None</option>
                                 <?php
                                     $catsql = "SELECT * FROM `categories`"; 
                                     $catresult = mysqli_query($conn, $catsql);

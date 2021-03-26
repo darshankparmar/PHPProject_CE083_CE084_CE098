@@ -159,20 +159,26 @@
         </button>
       </div>
         <div class="modal-body">
-            <form action="partials/_userManage.php" method="post" enctype="multipart/form-data">
-                <div class="text-left my-2 row" style="border-bottom: 2px solid #dee2e6;">
-                    <div class="form-group col-md-8">
+            
+            <div class="text-left my-2 row" style="border-bottom: 2px solid #dee2e6;">
+                <div class="form-group col-md-8">
+                    <form action="partials/_userManage.php" method="post" enctype="multipart/form-data">
                         <b><label for="image">Profile Picture</label></b>
                         <input type="file" name="userimage" id="userimage" accept=".jpg" class="form-control" required style="border:none;">
                         <small id="Info" class="form-text text-muted mx-3">Please .jpg file upload.</small>
                         <input type="hidden" id="userId" name="userId" value="<?php echo $Id; ?>">
-                        <button type="submit" class="btn btn-success my-1" name="updateProfilePhoto">Update Img</button>
-                    </div>
-                    <div class="form-group col-md-4">
-                        <img src="/OnlinePizzaDelivery/img/person-<?php echo $Id; ?>.jpg" alt="Profile Photo" width="100" height="100" onError="this.src ='/OnlinePizzaDelivery/img/profilePic.jpg'">
-                    </div>
+                        <button type="submit" class="btn btn-success mt-3" name="updateProfilePhoto">Update Img</button>
+                    </form>         
                 </div>
-            </form>
+                <div class="form-group col-md-4">
+                    <img src="/OnlinePizzaDelivery/img/person-<?php echo $Id; ?>.jpg" alt="Profile Photo" width="100" height="100" onError="this.src ='/OnlinePizzaDelivery/img/profilePic.jpg'">
+                    <form action="partials/_userManage.php" method="post">
+                        <input type="hidden" id="userId" name="userId" value="<?php echo $Id; ?>">
+                        <button type="submit" class="btn btn-success mt-2" name="removeProfilePhoto">Remove Img</button>
+                    </form>
+                </div>
+            </div>
+            
             <form action="partials/_userManage.php" method="post">
                 <div class="form-group">
                     <b><label for="username">Username</label></b>

@@ -78,7 +78,7 @@
                                     }
                                 }
                                 else{
-                                    echo '<button class="btn btn-primary mx-2" disabled>Add to Cart</button>';
+                                    echo '<button class="btn btn-primary mx-2" data-toggle="modal" data-target="#loginModal">Add to Cart</button>';
                                 }
                             echo '</form>                            
                                 <a href="viewPizza.php?pizzaid=' . $pizzaId . '" class="mx-2"><button class="btn btn-primary">Quick View</button></a> 

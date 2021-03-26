@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 25, 2021 at 06:22 PM
+-- Generation Time: Mar 26, 2021 at 06:21 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.2.34
 
@@ -72,7 +72,8 @@ CREATE TABLE `contact` (
 INSERT INTO `contact` (`contactId`, `userId`, `email`, `phoneNo`, `orderId`, `message`, `time`) VALUES
 (1, 1, 'dkp@gmail.com', 8888888888, 0, 'your service is really nice.', '2021-03-22 14:56:11'),
 (4, 3, 'admin@gmail.com', 2222222222, 4, 'why my order denied?', '2021-03-22 15:03:02'),
-(5, 3, 'admin@gmail.com', 2222222222, 0, 'Your Food is really Nice.', '2021-03-25 10:27:21');
+(5, 3, 'admin@gmail.com', 2222222222, 0, 'Your Food is really Nice.', '2021-03-25 10:27:21'),
+(6, 11, 'jayeshhadiya@gmail.com', 5252525252, 9, 'Why my Order is denied ?', '2021-03-26 07:11:17');
 
 -- --------------------------------------------------------
 
@@ -95,7 +96,8 @@ CREATE TABLE `contactreply` (
 INSERT INTO `contactreply` (`id`, `contactId`, `userId`, `message`, `datetime`) VALUES
 (1, 1, 1, 'Thank you very much!', '2021-03-25 08:31:34'),
 (2, 4, 3, 'sorry for inconvenience!\r\norder Item not available this time. Please Order Some different Item.', '2021-03-25 08:37:41'),
-(3, 5, 3, 'Thank you !', '2021-03-25 10:28:08');
+(3, 5, 3, 'Thank you !', '2021-03-25 10:28:08'),
+(4, 6, 11, 'sorry for inconvenience! order Item not available this time. Please Order Some different Item. If you pay Online your money refund very soon.', '2021-03-26 07:14:50');
 
 -- --------------------------------------------------------
 
@@ -121,7 +123,8 @@ INSERT INTO `deliverydetails` (`id`, `orderId`, `deliveryBoyName`, `deliveryBoyP
 (2, 2, 'Kamlesh Jadeja', 1212121212, 30, '2021-03-25 18:55:34'),
 (3, 5, 'Jayesh Hadiya', 1212121212, 30, '2021-03-25 18:58:56'),
 (4, 3, 'Mahesh J', 1111111111, 25, '2021-03-25 22:37:05'),
-(5, 7, 'Rajesh V', 9173916549, 25, '2021-03-25 22:37:41');
+(5, 7, 'Rajesh V', 9173916549, 25, '2021-03-25 22:37:41'),
+(6, 8, 'Darshan', 8484848484, 25, '2021-03-26 07:07:36');
 
 -- --------------------------------------------------------
 
@@ -174,7 +177,16 @@ INSERT INTO `orderitems` (`id`, `orderId`, `pizzaId`, `itemQuantity`) VALUES
 (31, 7, 3, 1),
 (32, 7, 4, 2),
 (33, 7, 5, 3),
-(34, 7, 6, 1);
+(34, 7, 6, 1),
+(35, 8, 1, 2),
+(36, 8, 2, 1),
+(37, 8, 7, 1),
+(38, 8, 9, 1),
+(39, 8, 12, 1),
+(40, 8, 53, 2),
+(41, 8, 41, 3),
+(42, 8, 39, 1),
+(43, 9, 67, 1);
 
 -- --------------------------------------------------------
 
@@ -205,7 +217,9 @@ INSERT INTO `orders` (`orderId`, `userId`, `address`, `zipCode`, `phoneNo`, `amo
 (4, 3, '124, kuber nagar, near ishwarkrupa, surat', 395006, 9173916549, 2188, '0', '5', '2021-03-21 13:37:44'),
 (5, 3, 'kuber nagar, surat', 395006, 8888888888, 2678, '0', '4', '2021-03-21 17:04:49'),
 (6, 3, 'kuber nagar, surat', 395006, 9173916549, 2700, '0', '6', '2021-03-21 17:06:38'),
-(7, 3, 'l b avenue, surat', 395006, 9173916549, 4400, '0', '2', '2021-03-25 19:24:39');
+(7, 3, 'l b avenue, surat', 395006, 9173916549, 4400, '0', '2', '2021-03-25 19:24:39'),
+(8, 11, 'Vikram Nagar, surat', 395010, 9173916549, 1505, '0', '4', '2021-03-26 07:05:58'),
+(9, 11, 'Vikram Nagar, surat', 395010, 9173916549, 51, '0', '5', '2021-03-26 07:09:35');
 
 -- --------------------------------------------------------
 
@@ -303,7 +317,7 @@ CREATE TABLE `sitedetail` (
 --
 
 INSERT INTO `sitedetail` (`tempId`, `systemName`, `email`, `contact1`, `contact2`, `address`, `dateTime`) VALUES
-(1, 'Domino\'s', 'darshanparmar263@gmail.com', 2515469442, 6304468851, '601 Sherwood Ave.San Bernandino', '2021-03-23 19:56:25');
+(1, 'Domino\'s', 'darshanparmar263@gmail.com', 2515469442, 6304468851, '601 Sherwood Ave.<br> San Bernandino', '2021-03-23 19:56:25');
 
 -- --------------------------------------------------------
 
@@ -334,7 +348,8 @@ INSERT INTO `users` (`id`, `username`, `firstName`, `lastName`, `email`, `phone`
 (4, 'bhavesh', 'Bhavesh', 'Parmar', 'bhavesh@gmail.com', 4444444444, '0', '$2y$10$Nkf3kFSH8/Pg5jwbzGJixevoP5B4PIOyoihx7puzJGeKGi9cR.NH.', '2021-03-18 16:57:50'),
 (6, 'temp', 'temp', 'temp', 'temp@gmail.com', 9173916549, '0', '$2y$10$rpW.DCp8qxvrkMDoO488vemri3naUtAe.RugEbo1Sb325hqaJ8/IS', '2021-03-24 17:12:26'),
 (8, 'user', 'user', 'user', 'user@gmail.com', 2582582582, '0', '$2y$10$yf68mqzJRneBqAsNHsp9KegBgtMpfu/rp64W0mTLRbQY7Pl8bsam.', '2021-03-25 13:48:42'),
-(10, 'user1', 'user', 'user', 'user@gmail.com', 5286358962, '0', '$2y$10$uX2DAw1OT3KegFU2qKR/Ie31C7qrHaCVOKOY0aH4auvC7n.Ofxwra', '2021-03-25 13:52:38');
+(10, 'user1', 'user1', 'user1', 'user@gmail.com', 5286358961, '0', '$2y$10$uX2DAw1OT3KegFU2qKR/Ie31C7qrHaCVOKOY0aH4auvC7n.Ofxwra', '2021-03-25 13:52:38'),
+(11, 'jayesh', 'Jayesh', 'Hadiya', 'jayeshhadiya@gmail.com', 5252525252, '0', '$2y$10$nYl.uFGjsDstdna1AUckgu240mGl2VIGbKgVe1zjz05n5fpMKESZ.', '2021-03-26 06:45:13');
 
 -- --------------------------------------------------------
 
@@ -438,43 +453,43 @@ ALTER TABLE `viewcart`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `categorieId` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `categorieId` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `contact`
 --
 ALTER TABLE `contact`
-  MODIFY `contactId` int(21) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `contactId` int(21) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `contactreply`
 --
 ALTER TABLE `contactreply`
-  MODIFY `id` int(21) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(21) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `deliverydetails`
 --
 ALTER TABLE `deliverydetails`
-  MODIFY `id` int(21) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(21) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `orderitems`
 --
 ALTER TABLE `orderitems`
-  MODIFY `id` int(21) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id` int(21) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `orderId` int(21) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `orderId` int(21) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `pizza`
 --
 ALTER TABLE `pizza`
-  MODIFY `pizzaId` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
+  MODIFY `pizzaId` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
 
 --
 -- AUTO_INCREMENT for table `sitedetail`
@@ -486,13 +501,13 @@ ALTER TABLE `sitedetail`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(21) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(21) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `viewcart`
 --
 ALTER TABLE `viewcart`
-  MODIFY `cartItemId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `cartItemId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

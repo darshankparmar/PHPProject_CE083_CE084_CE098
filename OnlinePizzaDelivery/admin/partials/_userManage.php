@@ -100,5 +100,21 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                 </script>';
         }
     }
+    
+    if(isset($_POST['removeProfilePhoto'])) {
+        $id = $_POST["userId"];
+        $filename = $_SERVER['DOCUMENT_ROOT']."/OnlinePizzaDelivery/img/person-".$id.".jpg";
+        if (file_exists($filename)) {
+            unlink($filename);
+            echo "<script>alert('Removed');
+                window.location=document.referrer;
+            </script>";
+        }
+        else {
+            echo "<script>alert('no photo available.');
+                window.location=document.referrer;
+            </script>";
+        }
+    }
 }
 ?>

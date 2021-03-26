@@ -54,7 +54,7 @@
                     }
                 }
                 else{
-                    echo '<button class="btn btn-primary my-2" disabled>Add to Cart</button>';
+                    echo '<button class="btn btn-primary my-2" data-toggle="modal" data-target="#loginModal">Add to Cart</button>';
                 }
                 echo '</form>
                 <h6 class="my-1"> View </h6>
