@@ -42,26 +42,32 @@
                                     $userType = "Admin";
 
                                 echo '<tr>
-                                        <td>' .$Id. '</td>
-                                        <td><img src="/OnlinePizzaDelivery/img/person-' .$Id. '.jpg" alt="image for this user" onError="this.src =\'/OnlinePizzaDelivery/img/profilePic.jpg\'" width="100px" height="100px"></td>
-                                        <td>' .$username. '</td>
-                                        <td>
-                                            <p>First Name : <b>' .$firstName. '</b></p>
-                                            <p>Last Name : <b>' .$lastName. '</b></p>
-                                        </td>
-                                        <td>' .$email. '</td>
-                                        <td>' .$phone. '</td>
-                                        <td>' .$userType. '</td>
-                                        <td class="text-center">
-                                            <div class="row mx-auto" style="width:112px">
-													<button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#editUser' .$Id. '" type="button">Edit</button>
-													<form action="partials/_userManage.php" method="POST">
-														<button name="removeUser" class="btn btn-sm btn-danger" style="margin-left:9px;">Delete</button>
-														<input type="hidden" name="Id" value="'.$Id. '">
-													</form>
-												</div>
-                                        </td>
-                                    </tr>';
+                                    <td>' .$Id. '</td>
+                                    <td><img src="/OnlinePizzaDelivery/img/person-' .$Id. '.jpg" alt="image for this user" onError="this.src =\'/OnlinePizzaDelivery/img/profilePic.jpg\'" width="100px" height="100px"></td>
+                                    <td>' .$username. '</td>
+                                    <td>
+                                        <p>First Name : <b>' .$firstName. '</b></p>
+                                        <p>Last Name : <b>' .$lastName. '</b></p>
+                                    </td>
+                                    <td>' .$email. '</td>
+                                    <td>' .$phone. '</td>
+                                    <td>' .$userType. '</td>
+                                    <td class="text-center">
+                                        <div class="row mx-auto" style="width:112px">
+                                            <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#editUser' .$Id. '" type="button">Edit</button>';
+                                            if($Id == 1) {
+                                                echo '<button class="btn btn-sm btn-danger" disabled style="margin-left:9px;">Delete</button>';
+                                            }
+                                            else {
+                                                echo '<form action="partials/_userManage.php" method="POST">
+                                                        <button name="removeUser" class="btn btn-sm btn-danger" style="margin-left:9px;">Delete</button>
+                                                        <input type="hidden" name="Id" value="'.$Id. '">
+                                                    </form>';
+                                            }
+
+                                    echo '</div>
+                                    </td>
+                                </tr>';
                             }
                         ?>
                     </tbody>
