@@ -48,7 +48,6 @@
               <button type="submit" class="btn btn-success">Submit</button>
             </form>
             <p class="mb-0 mt-1">Already have an account? <a href="#" data-dismiss="modal" data-toggle="modal" data-target="#loginModal">Login here</a>.</p>
-            <!-- <button type="button" class="btn btn-success" data-dismiss="modal" data-toggle="modal" data-target="#loginModal">Submit</button> -->
           </div>
         </div>
       </div>
