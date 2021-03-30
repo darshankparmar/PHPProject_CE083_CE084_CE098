@@ -1,4 +1,4 @@
-<div class="alert alert-info alert-dismissible fade show" role="alert" style="width:100%">
+<div class="alert alert-info alert-dismissible fade show" role="alert" style="width:100%" id='notempty'>
     <strong>Info!</strong> If problem is not related to the order then order id = 0	
     <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">×</span></button>
 </div>
@@ -14,7 +14,7 @@
 <div style="margin-right: 32px;display: table;margin-left: auto;">
 <button type="button" class="btn btn-danger-gradiant text-white border-0 py-2 px-3 mx-2" data-toggle="modal" data-target="#history"><span> HISTORY <i class="ti-arrow-right"></i></span></button>
 </div>
-<div class="container-fluid">	
+<div class="container-fluid" id='empty'>	
 	<div class="row">
 		<div class="card col-lg-12">
 			<div class="card-body">
@@ -35,7 +35,7 @@
                         <?php
                             $sql = "SELECT * FROM contact"; 
                             $result = mysqli_query($conn, $sql);
-                            
+                            $count = 0;
                             while($row=mysqli_fetch_assoc($result)) {
                                 $contactId = $row['contactId'];
                                 $userId = $row['userId'];
@@ -44,6 +44,7 @@
                                 $orderId = $row['orderId'];
                                 $message = $row['message'];
                                 $time = $row['time'];
+                                $count++;
 
                                 echo '<tr>
                                         <td>' .$contactId. '</td>
@@ -57,6 +58,11 @@
                                             <button class="btn btn-sm btn-primary" type="button" data-toggle="modal" data-target="#reply' .$contactId. '">Reply</button>
                                         </td>
                                     </tr>';
+                            }
+                            if($count==0) {
+                              ?><script> document.getElementById("notempty").innerHTML = '<div class="alert alert-info alert-dismissible fade show" role="alert" style="width:100%"> You have not recieve any message!	</div>';
+                              document.getElementById("empty").innerHTML = '';
+                              </script> <?php
                             }
                         ?>
                         
@@ -114,7 +120,7 @@
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" id="notReply">
             <table class="table-striped table-bordered col-md-12 text-center">
                 <thead style="background-color: rgb(111 202 203);">
                     <tr>
@@ -127,18 +133,24 @@
                 <?php 
                     $sql = "SELECT * FROM `contactreply`"; 
                     $result = mysqli_query($conn, $sql);
-
+                    $totalReply = 0;
                     while($row=mysqli_fetch_assoc($result)) {
                         $contactId = $row['contactId'];
                         $message = $row['message'];
                         $datetime = $row['datetime'];
+                        $totalReply++;
 
                         echo '<tr>
                                 <td>' .$contactId. '</td>
                                 <td>' .$message. '</td>
                                 <td>' .$datetime. '</td>
                               </tr>';
-                    }                    
+                    }    
+
+                    if($totalReply==0) {
+                      ?><script> document.getElementById("notReply").innerHTML = '<div class="alert alert-info alert-dismissible fade show" role="alert" style="width:100%"> You have not Reply any message!	</div>';</script> <?php
+                    }   
+
                 ?>
                 </tbody>
 		    </table>

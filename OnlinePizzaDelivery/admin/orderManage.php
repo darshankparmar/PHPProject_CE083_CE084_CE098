@@ -12,7 +12,7 @@
             </div>
         </div>
         
-        <table class="table table-striped table-hover text-center">
+        <table class="table table-striped table-hover text-center" id="NoOrder">
             <thead style="background-color: rgb(111 202 203);">
                 <tr>
                     <th>Order Id</th>
@@ -62,7 +62,9 @@
                                 <td><a href="#" data-toggle="modal" data-target="#orderItem' . $orderId . '" class="view" title="View Details"><i class="material-icons">&#xE5C8;</i></a></td>
                             </tr>';
                     }
-                    
+                    if($counter==0) {
+                        ?><script> document.getElementById("NoOrder").innerHTML = '<div class="alert alert-info alert-dismissible fade show" role="alert" style="width:100%"> You have not Recieve any Order!	</div>';</script> <?php
+                    } 
                 ?>
             </tbody>
         </table>
