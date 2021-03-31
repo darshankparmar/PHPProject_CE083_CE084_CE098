@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <title>Home</title>
     <link rel = "icon" href ="img/logo.jpg" type = "image/x-icon">
-</head>
+  </head>
 <body>
   <?php include 'partials/_dbconnect.php';?>
   <?php require 'partials/_nav.php' ?>
