@@ -123,7 +123,7 @@
   <body>
   <?php include 'partials/_dbconnect.php';?>
   <?php include 'partials/_nav.php';?>
-      <!-- https://www.wrappixel.com/demos/ui-kit/wrapkit/assets/images/contact/map.jpg -->
+
       <div class="contact2" style="background-image:url(img/map.jpg);height: 400px;" id="contact">
         <div class="container">
           <div class="row contact-container">

@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-  <head>
+<head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -20,7 +20,6 @@
     <?php include 'partials/_dbconnect.php';?>
     <?php require 'partials/_nav.php' ?>
     <?php 
-    // echo (int)$loggedin ;
     if($loggedin){
     ?>
     
@@ -98,7 +97,6 @@
             <div class="col-lg-4">
                 <div class="card wish-list mb-3">
                     <div class="pt-4 border bg-light rounded p-3">
-                        <!-- <div class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">Order summary </div> -->
                         <h5 class="mb-3 text-uppercase font-weight-bold text-center">Order summary</h5>
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0 bg-light">Total Price<span>Rs. <?php echo $totalPrice ?></span></li>
@@ -158,6 +156,7 @@
     ?>
     <?php require 'partials/_checkoutModal.php'; ?>
     <?php require 'partials/_footer.php' ?>
+    
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>

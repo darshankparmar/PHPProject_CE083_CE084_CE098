@@ -1,17 +1,17 @@
 # PHPProject_CE083_CE084_CE098
 
-## PHP PROJECT
+## Online Pizza Delivery
 
 👉 Download the zip file
 
-👉 Extract the file and copy OnlinePizzaDelivery folder
+👉 Extract the file and copy PHPProject_CE083_CE084_CE098 folder
 
     Paste inside root directory
         * For xampp xampp/htdocs 
         * For wamp wamp/www
         * For lamp var/www/html
 
-![Screenshot (572)](https://user-images.githubusercontent.com/67963288/112586842-8406c300-8e22-11eb-9fd2-03fdf37e5e5c.png)
+![Screenshot (589)](https://user-images.githubusercontent.com/77385964/113154003-38ef1480-9255-11eb-9785-2499de1b294c.png)
 
 👉 Open PHPMyAdmin (http://localhost/phpmyadmin)
 
@@ -25,9 +25,9 @@
 
 👉 Run the script 
 
-    For User Panel: http://localhost/OnlinePizzaDelivery/
+    For User Panel: http://localhost/PHPProject_CE083_CE084_CE098/
     
-    For admin panel: http://localhost/OnlinePizzaDelivery/admin/
+    For admin panel: http://localhost/PHPProject_CE083_CE084_CE098/admin/
     
  ## Credential for Admin panel :
 
