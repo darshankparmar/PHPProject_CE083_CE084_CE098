@@ -21,7 +21,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         $result = mysqli_query($conn, $sql);
         $contactId = $conn->insert_id;
         echo '<script>alert("Thanks for Contact us. Your contact id is ' .$contactId. '. We will contact you very soon.");
-                    window.location.href="http://localhost/OnlinePizzaDelivery/index.php";  
+                    window.location.href="http://localhost/PHPProject_CE083_CE084_CE098/index.php";  
                     </script>';
                     exit();
     }

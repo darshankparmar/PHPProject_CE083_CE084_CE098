@@ -38,7 +38,7 @@
             <div class="carousel-background"><img src="assets/img/slide/slide-1.jpg" alt=""></div>
             <div class="carousel-container">
               <div class="carousel-content">
-                <h2 class="animate__animated animate__fadeInDown">Welcome to <span>Domino's</span></h2>
+                <h2 class="animate__animated animate__fadeInDown">Welcome to <span>Pizza World</span></h2>
                 <a href="index.php" class="btn-get-started animate__animated animate__fadeInUp scrollto">Get Started</a>
               </div>
             </div>
@@ -94,10 +94,9 @@
 
         <div class="row">
           <div class="col-lg-6">
-            <h3>Welcome to <strong>Domino's</strong></h3>
+            <h3>Welcome to <strong>Pizza World</strong></h3>
             <h3><strong>The Worldwide Leader in Pizza Delivery</strong></h3>
             <p class="font-italic">
-            Founded in 1960, Domino's is the recognized world leader in pizza delivery operating a network of company-owned and franchise-owned stores in the United States and international markets. Domino's is a company of exceptional people on a mission to be the best pizza delivery company in the world. To learn more about Domino's, please use the links below or select from the "About Domino's" drop-down menu near the top of the page.            </p>
           </div>
           <div class="col-lg-6 pt-4 pt-lg-0 content">
             <div class="skills-content">

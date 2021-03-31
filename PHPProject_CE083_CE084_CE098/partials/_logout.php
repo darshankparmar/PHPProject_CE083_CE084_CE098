@@ -9,5 +9,5 @@ unset($_SESSION["userId"]);
 // session_unset();
 // session_destroy();
 
-header("location: /OnlinePizzaDelivery/index.php");
+header("location: /PHPProject_CE083_CE084_CE098/index.php");
 ?>
